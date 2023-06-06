@@ -1,14 +1,15 @@
+## My Favorite Game: Monster Hunter
 
-1. A short writeup on what your favorite game is and why.
 
-2. The video game development company that made the game. Include a URL to their website using Markdown syntax.
+![Monster Hunter pic](monsterhunter.jpg)
 
-3. The release date of the game.
+####Development company: [Capcom Co., Ltd.](https://www.monsterhunter.com)
 
-4. The game engine used to make the game (if you can find it).
+####The release date of the game: 2004
 
-5. Include at least one image of the game using Markdown syntax.
+####The game engine used to make the game: MT Framework
 
-6. A list of similar or related games. These can be games developed by the same company, other games in the franchise, or similar games. Each title should include a link to the homepage of that game.
+####About why I love this game:
+Actually, I am not a video game person. The main reason why I love this game is because of the soundtrack. The first time I heard the music of Monster Hunter was from The Game Award in 2018, and the series was Monster Hunter: World. After I watched The Game Award concert, I kept searching for other series of Monster Hunter. Occasionally, I found one of the soundtracks most attractive to me, which was called [Monster Hunter World Original Soundtrack: The Complete Experience.](https://www.youtube.com/watch?v=-yEL0ZrpzE8&t=8s) Moreover, I would like to dig into more information about this game, so I searched for some game  
 
-7. Use Markdown to define headers and create a concise file structure for your file.
+
