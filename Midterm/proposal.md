@@ -19,7 +19,8 @@
 
 	・Snake will grow up through eat the food in the game.
 	
-	・Snake will dead if it touch the wall or itself.
+	・Snake will dead if it touch the wall, obstacles 
+	  or itself.
 	
 	・Nice-look game enviroment.
 	
