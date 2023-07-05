@@ -42,12 +42,22 @@
 	・Implement the level maker of my game. 
 	
 	・It will be 2 level in total, 
-	 and the second level will have enemies need to escape.
+	  and the second level will have enemies need to 
+	  escape.
 	
 	・An option to ask the user are you single player 
-	 or two players at the home page.
+	  or two players at the home page.
 
 
 ### 6. In a paragraph or two, outline your next steps and tell me what additional skills you will require and what topics you might research for the completion of this project.
-	・
+	Next step:
+	・Starting design the Snake, background, and home page.
+	・Planing and writing the Snake movement in C# script.
+	-
+	Possible reserch topics:
+	・How to ask the user do they want single or two 
+	   players at the home page.
+	・Some sound effect in the game. 
+	  (game over, eating sound etc)
+	
 	
