@@ -8,9 +8,11 @@ public class Snake : MonoBehaviour
     private Vector2 _direction = Vector2.right;
     private List<Transform> _segments = new List<Transform>();
     public Transform segmentPrefab;
-    public int initialSize = 4;
+    public int initialSize;
+    private GameBehavior gameBehavior;
 
     [SerializeField] private AudioSource eatSoundEffect;
+    [SerializeField] private AudioSource desthSoundEffect;
 
 
     private void Start()
@@ -18,6 +20,12 @@ public class Snake : MonoBehaviour
         ResetState(); //when player press start this script will call reset first
         Vector3 initialPosition = new Vector3(-26, -11, 0);
         this.transform.position = initialPosition;
+
+        gameBehavior = FindObjectOfType<GameBehavior>();
+        if (gameBehavior == null)
+        {
+            Debug.LogError("GameBehavior script not found in the scene.");
+        }
 
     }
 
@@ -78,20 +86,28 @@ public class Snake : MonoBehaviour
         this.transform.position = Vector3.zero;
     }
 
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.tag == "Food")
-    //    {
-    //        Debug.Log("EAT");
-    //        Grow();
-    //        eatSoundEffect.Play();
-    //    }
-    //    else if (other.tag == "Obstacle")
-    //    {
-    //        Debug.Log("Hit the wall");
-    //        //ResetState();
 
-    //    }
-    //}
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Food")
+        {
+            Debug.Log("Eat");
+            Grow();
+            eatSoundEffect.Play();
+            ScoreManager.instance.AddPoint();
+        }
+        else if (other.tag == "Obstacle")
+        {
+            Debug.Log("Hit the wall");
+            gameBehavior.GameOver();
+            desthSoundEffect.Play();
+        }
+        else if (other.tag == "Body")
+        {
+            Debug.Log("Hit myself");
+            gameBehavior.GameOver();
+            desthSoundEffect.Play();
+        }
 
+    }
 }

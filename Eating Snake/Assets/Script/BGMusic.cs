@@ -8,6 +8,7 @@ public class BGMusic : MonoBehaviour
 
     private void Awake()
     {
+
         if (backgroundMusic == null)
         {
             backgroundMusic = this;
@@ -18,6 +19,6 @@ public class BGMusic : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
     }
 }

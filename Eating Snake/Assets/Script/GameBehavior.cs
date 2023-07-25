@@ -7,41 +7,55 @@ public class GameBehavior : MonoBehaviour
     public Snake snake; // Reference to the Snake script
     public Transform foodPrefab; // Reference to the food prefab
     public BoxCollider2D gridArea; // Reference to the grid area where food spawns
-    //private FoodSpawner foodSpawner;
-    private bool isGameOver;
+    private bool isGameOver = false;
     public GameoverMenu gameoverMenu;
-    [SerializeField] private AudioSource eatSoundEffect;
+    public BGMusic bgMusicManager;
+    public static GameBehavior Instance { get; private set; }
+   
 
     private void Start()
     {
-        //foodSpawner = new FoodSpawner();
         ResetGame();
     }
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); // Ensures only one instance of GameBehavior exists.
+        }
+    }
 
     public void ResetGame()
     {
-        
-        // Reset the Snake
         snake.ResetState();
-
-        // Spawn the first food
-        //foodSpawner.SpawnFood();
+        isGameOver = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void GameOver()
     {
-        if (other.tag == "Food")
+        isGameOver = true;
+        gameoverMenu.gameOver();
+        if (bgMusicManager != null)
         {
-            Debug.Log("EAT");
-            snake.Grow();
-            eatSoundEffect.Play();
-        }
-        else if (other.tag == "Obstacle" && !isGameOver)
-        {
-            isGameOver = true;
-            gameoverMenu.gameOver();
-            Debug.Log("Hit the wall, dead");
+            bgMusicManager.GetComponent<AudioSource>().Stop();
         }
     }
+
+    public void SpawnFood()
+    {
+        //// Calculate the random position within the grid area
+        //float x = Random.Range(gridArea.bounds.min.x, gridArea.bounds.max.x);
+        //float y = Random.Range(gridArea.bounds.min.y, gridArea.bounds.max.y);
+        //Vector3 randomPosition = new Vector3(x, y, 0f);
+
+        //// Instantiate the food prefab at the random position
+        //Instantiate(foodPrefab, randomPosition, Quaternion.identity);
+
+    }
+
 }
