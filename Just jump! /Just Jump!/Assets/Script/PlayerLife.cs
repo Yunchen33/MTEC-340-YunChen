@@ -5,12 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
+    [SerializeField] AudioSource deathSound;
     bool dead = false;
+    bool gamePause = false;
+
+    public GameOverMenu GameOverMenu;
+    int score = 0;
 
 
     private void Update()
     {
-        if (transform.position.y < -1f && !dead)
+        if (transform.position.y < -6f && !dead)
         {
             Die();
         }
@@ -30,15 +35,23 @@ public class PlayerLife : MonoBehaviour
 
     void Die()
     {
-        
-        Invoke(nameof(ReloadLevel), 1.3f);
+        Time.timeScale = 0;
+        gamePause = true;
+        //Invoke(nameof(ReloadLevel), 1.3f);
         dead = true;
-        
+        deathSound.Play();
+        Gameover();
+
     }
 
     void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Gameover()
+    {
+        GameOverMenu.Setup(score);
     }
 
 }

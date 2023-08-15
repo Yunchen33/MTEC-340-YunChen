@@ -10,6 +10,8 @@ public class PlayerBehavior : MonoBehaviour
 
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
+
+    [SerializeField] AudioSource jumpSound;
     
     void Start()
     {
@@ -29,7 +31,7 @@ public class PlayerBehavior : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+            Jump();
         }
         
     }
@@ -38,6 +40,7 @@ public class PlayerBehavior : MonoBehaviour
     void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+        jumpSound.Play();
     }
 
     private void OnCollisionEnter(Collision collision)
